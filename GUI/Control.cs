@@ -13,9 +13,9 @@ namespace KLib
         public bool inside = false;
         public bool visible = true;
 
-        public Control(Vector2 position)
+        public Control(Vector2 pos)
         {
-            this.position = position;
+            this.position = pos;
         }
 
         public virtual void Draw(SpriteBatch batch)
