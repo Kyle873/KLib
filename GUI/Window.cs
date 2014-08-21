@@ -9,20 +9,53 @@ namespace KLib
 {
     public class Window : Control
     {
-        public Color rectColor = Color.White;
-        public Color fillColor = Color.White;
-        public Texture2D icon = null;
-        public SpriteFont font = null;
-        public string title = string.Empty;
-        public bool titleHovering = false;
-        public List<Control> controls = new List<Control>();
+        private Color rectColor = Color.White;
+        public Color RectColor
+        {
+            get { return rectColor; }
+            set { rectColor = value; }
+        }
+        private Color fillColor = Color.White;
+        public Color FillColor
+        {
+            get { return fillColor; }
+            set { fillColor = value; }
+        }
+        private Texture2D icon = null;
+        public Texture2D Icon
+        {
+            get { return icon; }
+            set { icon = value; }
+        }
+        private SpriteFont titleFont = null;
+        public SpriteFont TitleFont
+        {
+            get { return titleFont; }
+            set { titleFont = value; }
+        }
+        private string title = string.Empty;
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        private bool titleHovering = false;
+        public bool TitleHovering
+        {
+            get { return titleHovering; }
+        }
+        private List<Control> controls = new List<Control>();
+        public List<Control> Controls
+        {
+            get { return controls; }
+        }
 
         bool wasTitleHovering = false;
 
-        public Window(Vector2 pos, int width, int height, string title = "")
-            : base(pos)
+        public Window(Vector2 position, int width, int height, string title = "")
+            : base(position)
         {
-            this.position = pos;
+            this.position = position;
             this.title = title;
             this.width = width;
             this.height = height;
@@ -45,8 +78,8 @@ namespace KLib
             Shape.DrawRect((int)position.X, (int)position.Y, width, 20, rectColor, fillColor);
             
             // Title Text
-            if (font != null)
-                batch.DrawString(font, title, new Vector2(position.X + 24, position.Y - 1), Color.White);
+            if (titleFont != null)
+                batch.DrawString(titleFont, title, new Vector2(position.X + 24, position.Y - 1), Color.White);
             
             // Title Icon
             if (icon != null)

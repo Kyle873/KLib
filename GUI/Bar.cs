@@ -7,16 +7,51 @@ namespace KLib
 {
     public class Bar : Control
     {
-        public float value = 0f;
-        public float valueMax = 100f;
-        public bool gradient = false;
-        public Color color = Color.White;
-        public Color fillColor = Color.White;
-        public Vector3 fillColorLeft = Vector3.Zero;
-        public Vector3 fillColorRight = Vector3.Zero;
+        private float value = 0f;
+        public float Value
+        {
+            get { return this.value; }
+            set { this.value = value; }
+        }
+        private float valueMax = 100f;
+        public float ValueMax
+        {
+            get { return valueMax; }
+            set { valueMax = value; }
+        }
+        private bool gradient = false;
+        public bool Gradient
+        {
+            get { return gradient; }
+            set { gradient = value; }
+        }
+        private Color color = Color.White;
+        public Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+        private Color fillColor = Color.White;
+        public Color FillColor
+        {
+            get { return fillColor; }
+            set { fillColor = value; }
+        }
+        private Vector3 fillColorLeft = Vector3.Zero;
+        public Vector3 FillColorLeft
+        {
+            get { return fillColorLeft; }
+            set { fillColorLeft = value; }
+        }
+        private Vector3 fillColorRight = Vector3.Zero;
+        public Vector3 FillColorRight
+        {
+            get { return fillColorRight; }
+            set { fillColorRight = value; }
+        }
 
-        public Bar(Vector2 pos = default(Vector2), int width = 100, int height = 16, float valueMax = 100f, bool gradient = false)
-            : base(pos)
+        public Bar(Vector2 position = default(Vector2), int width = 100, int height = 16, float valueMax = 100f, bool gradient = false)
+            : base(position)
         {
             this.width = width;
             this.height = height;

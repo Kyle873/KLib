@@ -7,16 +7,35 @@ namespace KLib
 {
     public class Icon : Control
     {
-        public Texture2D icon = null;
-        public Color color = Color.White;
-        public Rectangle size = new Rectangle();
-        public float scale = 1f;
-        public bool insideBorder = false;
-
-        public Icon(Vector2 pos, Texture2D icon, int width = 16, int height = 16)
-            : base(pos)
+        private Texture2D icon = null;
+        public Texture2D Icon1
         {
-            this.position = pos;
+            get { return icon; }
+            set { icon = value; }
+        }
+        private Color color = Color.White;
+        public Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+        private Rectangle size = new Rectangle();
+        public Rectangle Size
+        {
+            get { return size; }
+            set { size = value; }
+        }
+        private float scale = 1f;
+        public float Scale
+        {
+            get { return scale; }
+            set { scale = value; }
+        }
+
+        public Icon(Vector2 position, Texture2D icon, int width = 16, int height = 16)
+            : base(position)
+        {
+            this.position = position;
             this.icon = icon;
             this.width = width;
             this.height = height;
