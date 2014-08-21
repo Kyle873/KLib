@@ -106,17 +106,17 @@ namespace KLib
 
             // Help Console Command
             ConsoleCommand helpCommand = new ConsoleCommand(Help, "help");
-            helpCommand.help = "Shows help for all commands";
+            helpCommand.Help = "Shows help for all commands";
             AddCommand(helpCommand);
 
             // Exit/Quit Console Command
             ConsoleCommand quitCommand = new ConsoleCommand(Quit, "quit", "exit");
-            quitCommand.help = "Quit game";
+            quitCommand.Help = "Quit game";
             AddCommand(quitCommand);
 
             // Error Console Command
             ConsoleCommand errorCommand = new ConsoleCommand(Error, "error");
-            errorCommand.help = "Throw a test Exception";
+            errorCommand.Help = "Throw a test Exception";
             AddCommand(errorCommand);
         }
 
@@ -143,7 +143,7 @@ namespace KLib
                     {
                         if (!firstTrimmed)
                         {
-                            lines[0].text = lines[0].text.Substring(0, i);
+                            lines[0].Text = lines[0].Text.Substring(0, i);
                             firstTrimmed = true;
                         }
 
@@ -160,22 +160,22 @@ namespace KLib
                 switch (logLevel)
                 {
                     case ConsoleLogLevel.Normal:
-                        line.color = Color.White;
+                        line.Color = Color.White;
                         break;
                     case ConsoleLogLevel.Internal:
-                        line.color = Color.SlateBlue;
+                        line.Color = Color.SlateBlue;
                         break;
                     case ConsoleLogLevel.Help:
-                        line.color = Color.LightBlue;
+                        line.Color = Color.LightBlue;
                         break;
                     case ConsoleLogLevel.Message:
-                        line.color = Color.LimeGreen;
+                        line.Color = Color.LimeGreen;
                         break;
                     case ConsoleLogLevel.Warning:
-                        line.color = Color.Yellow;
+                        line.Color = Color.Yellow;
                         break;
                     case ConsoleLogLevel.Error:
-                        line.color = Color.Red;
+                        line.Color = Color.Red;
                         break;
                 }
 
@@ -211,7 +211,7 @@ namespace KLib
                 // Lines
                 if (history.Count > 0)
                     for (int i = offset; i < history.Count; i++)
-                        Text.DrawText(font, history[i].text, new Vector2(12, 10 + ((i - offset) * 20)), history[i].color);
+                        Text.DrawText(font, history[i].Text, new Vector2(12, 10 + ((i - offset) * 20)), history[i].Color);
 
                 // Prompt
                 Text.DrawText(font, ">", new Vector2(12, (Engine.ScreenHeight / 2) - 24), Color.White);
@@ -241,12 +241,12 @@ namespace KLib
                 // Keys
                 foreach (ConsoleKey key in keys)
                 {
-                    if (Input.KeyPressed(key.key))
+                    if (Input.KeyPressed(key.Key))
                     {
                         if (Input.IsKeyDown(Keys.LeftShift))
-                            line += key.upper;
+                            line += key.Upper;
                         else
-                            line += key.lower;
+                            line += key.Lower;
                     }
                 }
 
@@ -265,7 +265,7 @@ namespace KLib
 
                     // Iterate commands
                     foreach (ConsoleCommand command in commands)
-                        foreach (string name in command.names)
+                        foreach (string name in command.Names)
                             if (line.ToLower() == name.ToLower())
                             {
                                 string full = line;
@@ -287,37 +287,37 @@ namespace KLib
 
             foreach (ConsoleCommand command in commands)
             {
-                if (command.help != string.Empty)
+                if (command.Help != string.Empty)
                 {
                     string help = string.Empty;
 
                     // Name
-                    help += command.names[0];
+                    help += command.Names[0];
 
                     // Arguments
-                    if (command.arguments.Count > 0)
-                        foreach (ConsoleCommandArgument argument in command.arguments)
-                            if (argument.optional)
-                                help += " [" + argument.name + "]";
+                    if (command.Arguments.Count > 0)
+                        foreach (ConsoleCommandArgument argument in command.Arguments)
+                            if (argument.Optional)
+                                help += " [" + argument.Name + "]";
                             else
-                                help += "<" + argument.name + ">";
+                                help += "<" + argument.Name + ">";
 
                     // Seperator
                     help += " - ";
 
                     // Help
-                    help += command.help + " ";
+                    help += command.Help + " ";
 
                     // Aliases
-                    if (command.names.Count > 1)
+                    if (command.Names.Count > 1)
                     {
                         help += "[";
 
-                        for (int i = 1; i < command.names.Count; i++)
-                            if (i == command.names.Count - 1)
-                                help += command.names[i];
+                        for (int i = 1; i < command.Names.Count; i++)
+                            if (i == command.Names.Count - 1)
+                                help += command.Names[i];
                             else
-                                help += command.names[i] + ", ";
+                                help += command.Names[i] + ", ";
 
                         help += "]";
                     }

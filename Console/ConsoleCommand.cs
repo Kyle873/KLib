@@ -8,8 +8,18 @@ namespace KLib
 
     public class ConsoleCommandArgument
     {
-        public string name;
-        public bool optional;
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        private bool optional;
+        public bool Optional
+        {
+            get { return optional; }
+            set { optional = value; }
+        }
 
         public ConsoleCommandArgument(string name, bool optional)
         {
@@ -20,10 +30,30 @@ namespace KLib
 
     public class ConsoleCommand
     {
-        public ConsoleCommandDelegate command;
-        public List<string> names;
-        public List<ConsoleCommandArgument> arguments;
-        public string help;
+        private ConsoleCommandDelegate command;
+        public ConsoleCommandDelegate Command
+        {
+            get { return command; }
+            set { command = value; }
+        }
+        private List<string> names;
+        public List<string> Names
+        {
+            get { return names; }
+            set { names = value; }
+        }
+        private List<ConsoleCommandArgument> arguments;
+        public List<ConsoleCommandArgument> Arguments
+        {
+            get { return arguments; }
+            set { arguments = value; }
+        }
+        private string help;
+        public string Help
+        {
+            get { return help; }
+            set { help = value; }
+        }
 
         public ConsoleCommand(ConsoleCommandDelegate cmd, params string[] cmdNames)
         {
