@@ -10,7 +10,11 @@ namespace KLib
 {
     public static class Utils
     {
-        public static Random random = new Random((int)DateTime.Now.Ticks);
+        private static Random random = new Random((int)DateTime.Now.Ticks);
+        public static Random Random
+        {
+            get { return Utils.random; }
+        }
 
         public static void DumpError(Exception e, string text = "")
         {
@@ -63,12 +67,12 @@ namespace KLib
 
         public static float CosineWave(float speed, float radius)
         {
-            return (float)(Math.Cos(Timing.timer / speed) * radius);
+            return (float)(Math.Cos(Timing.Timer / speed) * radius);
         }
 
         public static float SineWave(float speed, float radius)
         {
-            return (float)(Math.Sin(Timing.timer / speed) * radius);
+            return (float)(Math.Sin(Timing.Timer / speed) * radius);
         }
 
         // TODO: MonoGame implementation

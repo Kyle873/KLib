@@ -7,18 +7,60 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace KLib
 {
+    public class TooltipLine
+    {
+        private string text;
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+        private Color color;
+        public Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+        public TooltipLine(string text, Color color)
+        {
+            this.text = text;
+            this.color = color;
+        }
+    }
+
     public class Tooltip
     {
-        public const string NewLine = "~";
+        public const char NewLine = '~';
 
-        public List<TooltipLine> lines = new List<TooltipLine>();
-        public bool frame = false;
-        public Color frameColor = new Color(128, 128, 128, 192);
-        public Color frameFillColor = new Color(32, 32, 32, 128);
+        private List<TooltipLine> lines = new List<TooltipLine>();
+        public List<TooltipLine> Lines
+        {
+            get { return lines; }
+            set { lines = value; }
+        }
+        private bool frame = false;
+        public bool Frame
+        {
+            get { return frame; }
+            set { frame = value; }
+        }
+        private Color frameColor = new Color(128, 128, 128, 192);
+        public Color FrameColor
+        {
+            get { return frameColor; }
+            set { frameColor = value; }
+        }
+        private Color frameFillColor = new Color(32, 32, 32, 128);
+        public Color FrameFillColor
+        {
+            get { return frameFillColor; }
+            set { frameFillColor = value; }
+        }
 
         public void Draw(SpriteBatch batch, SpriteFont font)
         {
-            Vector2 position = new Vector2(Input.mouseX + 12, Input.mouseY + 12);
+            Vector2 position = new Vector2(Input.MouseX + 12, Input.MouseY + 12);
             Vector2 bounds = Vector2.Zero;
             List<int> tooltipLengths = new List<int>();
             int biggest = 0;
@@ -27,26 +69,26 @@ namespace KLib
 
             // Get lengths
             for (int i = 0; i < lines.Count; i++)
-                tooltipLengths.Add(lines[i].text.Length);
+                tooltipLengths.Add(lines[i].Text.Length);
 
             // Find biggest length
             biggest = tooltipLengths.Max();
 
             // Find out how many lines the tooltip has
             for (int i = 0; i < lines.Count; i++)
-                if (lines[i].text != string.Empty)
+                if (lines[i].Text != string.Empty)
                     maxLines++;
 
             // Find the index of the largest line
             for (int i = 0; i < lines.Count; i++)
-                if (lines[i].text.Length == biggest)
+                if (lines[i].Text.Length == biggest)
                 {
                     biggestIndex = i;
                     break;
                 }
 
             // Measure the longest tooltip to get X bounds
-            bounds = font.MeasureString(lines[biggestIndex].text);
+            bounds = font.MeasureString(lines[biggestIndex].Text);
 
             // Adjust bounds to frame
             if (frame)
@@ -62,10 +104,10 @@ namespace KLib
                 position.X = 0;
             if (position.Y < 0)
                 position.Y = 0;
-            if (position.X > Engine.screenWidth - bounds.X)
-                position.X = Engine.screenWidth - bounds.X;
-            if (position.Y > Engine.screenHeight - bounds.Y - ((maxLines - 1) * 20))
-                position.Y = Engine.screenHeight - bounds.Y - ((maxLines - 1) * 20);
+            if (position.X > Engine.ScreenWidth - bounds.X)
+                position.X = Engine.ScreenWidth - bounds.X;
+            if (position.Y > Engine.ScreenHeight - bounds.Y - ((maxLines - 1) * 20))
+                position.Y = Engine.ScreenHeight - bounds.Y - ((maxLines - 1) * 20);
 
             // Draw frame
             if (frame)
@@ -73,10 +115,10 @@ namespace KLib
 
             // Draw tooltip
             for (int i = 0; i < lines.Count; i++)
-                if (lines[i].text != string.Empty)
+                if (lines[i].Text != string.Empty)
                 {
-                    if (lines[i].text != NewLine)
-                        Text.DrawText(font, lines[i].text, position, lines[i].color, true);
+                    if (!lines[i].Text.Contains(NewLine))
+                        Text.DrawText(font, lines[i].Text, position, lines[i].Color, true);
                     
                     position.Y += 20;
                 }

@@ -7,17 +7,50 @@ namespace KLib
 {
     public static class Input
     {
-        public static KeyboardState keyState;
-        public static KeyboardState prevKeyState;
+        static KeyboardState keyState;
+        public static KeyboardState KeyState
+        {
+            get { return Input.keyState; }
+        }
+        static KeyboardState prevKeyState;
+        public static KeyboardState PrevKeyState
+        {
+            get { return Input.prevKeyState; }
+        }
 
-        public static MouseState mouseState;
-        public static MouseState prevMouseState;
+        static MouseState mouseState;
+        public static MouseState MouseState
+        {
+            get { return Input.mouseState; }
+        }
+        static MouseState prevMouseState;
+        public static MouseState PrevMouseState
+        {
+            get { return Input.prevMouseState; }
+        }
 
-        public static int mouseX;
-        public static int mouseY;
+        private static int mouseX;
+        public static int MouseX
+        {
+            get { return Input.mouseX; }
+        }
 
-        public static int scroll;
-        public static int prevScroll;
+        private static int mouseY;
+        public static int MouseY
+        {
+            get { return Input.mouseY; }
+        }
+
+        static int scroll;
+        public static int Scroll
+        {
+            get { return Input.scroll; }
+        }
+        static int prevScroll;
+        public static int PrevScroll
+        {
+            get { return Input.prevScroll; }
+        }
 
         public static bool IsKeyDown(Keys key)
         {
@@ -68,7 +101,7 @@ namespace KLib
             mouseX = mouseState.X;
             mouseY = mouseState.Y;
         }
-        
+
         public static void PostUpdate(GameTime dt)
         {
             prevKeyState = keyState;

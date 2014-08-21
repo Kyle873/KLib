@@ -11,7 +11,7 @@ namespace KLib
         {
             FloatTween tween = new FloatTween();
             tween.Loop = loop;
-            Engine.tweens.Add(tween);
+            Engine.Tweens.Add(tween);
             return tween;
         }
 
@@ -19,7 +19,7 @@ namespace KLib
         {
             ColorTween tween = new ColorTween();
             tween.Loop = loop;
-            Engine.tweens.Add(tween);
+            Engine.Tweens.Add(tween);
             return tween;
         }
 
@@ -27,7 +27,7 @@ namespace KLib
         {
             Vector2Tween tween = new Vector2Tween();
             tween.Loop = loop;
-            Engine.tweens.Add(tween);
+            Engine.Tweens.Add(tween);
             return tween;
         }
 
@@ -35,7 +35,7 @@ namespace KLib
         {
             Vector3Tween tween = new Vector3Tween();
             tween.Loop = loop;
-            Engine.tweens.Add(tween);
+            Engine.Tweens.Add(tween);
             return tween;
         }
 
@@ -43,7 +43,7 @@ namespace KLib
         {
             Vector4Tween tween = new Vector4Tween();
             tween.Loop = loop;
-            Engine.tweens.Add(tween);
+            Engine.Tweens.Add(tween);
             return tween;
         }
 
@@ -51,7 +51,7 @@ namespace KLib
         {
             QuaternionTween tween = new QuaternionTween();
             tween.Loop = loop;
-            Engine.tweens.Add(tween);
+            Engine.Tweens.Add(tween);
             return tween;
         }
     }

@@ -44,13 +44,13 @@ namespace KLib
                 // TODO: Port to MonoGame
                 if (gradient)
                 {
-                    SpriteBatch effectBatch = new SpriteBatch(Engine.device);
-                    Texture2D texture = new Texture2D(Engine.device, width, height);
+                    SpriteBatch effectBatch = new SpriteBatch(Engine.Device);
+                    Texture2D texture = new Texture2D(Engine.Device, width, height);
                     Color[] data = new Color[width * height];
                     for (int i = 0; i < width * height; i++)
                         data[i] = Color.White;
                     texture.SetData(data);  
-                    Effect effect = Engine.content.Load<Effect>(@"Shaders\BarGradient");
+                    Effect effect = Engine.Content.Load<Effect>(@"Shaders\BarGradient");
                     effect.Parameters["colorStart"].SetValue(fillColorLeft);
                     effect.Parameters["colorEnd"].SetValue(fillColorRight);
                     effectBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect);

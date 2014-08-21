@@ -71,25 +71,25 @@ namespace KLib
 
             base.Update(dt);
 
-            int x = Input.prevMouseState.X - Input.mouseState.X;
-            int y = Input.prevMouseState.Y - Input.mouseState.Y;
+            int x = Input.PrevMouseState.X - Input.MouseState.X;
+            int y = Input.PrevMouseState.Y - Input.MouseState.Y;
 
             // Is the cursor hovering over the title?
-            if (Input.mouseX >= position.X &&
-                Input.mouseX <= position.X + width &&
-                Input.mouseY >= position.Y &&
-                Input.mouseY <= position.Y + 20)
+            if (Input.MouseX >= position.X &&
+                Input.MouseX <= position.X + width &&
+                Input.MouseY >= position.Y &&
+                Input.MouseY <= position.Y + 20)
                 titleHovering = true;
             else
                 titleHovering = false;
 
             // Window Moving
             // TODO: Relative movement
-            if ((titleHovering || wasTitleHovering) && Input.mouseState.LeftButton == ButtonState.Pressed)
+            if ((titleHovering || wasTitleHovering) && Input.MouseState.LeftButton == ButtonState.Pressed)
             {
                 wasTitleHovering = true;
-                position.X = Input.mouseX;
-                position.Y = Input.mouseY;
+                position.X = Input.MouseX;
+                position.Y = Input.MouseY;
             }
             else
                 wasTitleHovering = false;
@@ -97,12 +97,12 @@ namespace KLib
             // Clamp window to screen
             if (position.X < 0)
                 position.X = 0;
-            if (position.X > Engine.screenWidth - width)
-                position.X = Engine.screenWidth - width;
+            if (position.X > Engine.ScreenWidth - width)
+                position.X = Engine.ScreenWidth - width;
             if (position.Y < 0)
                 position.Y = 0;
-            if (position.Y > Engine.screenHeight - height)
-                position.Y = Engine.screenHeight - height;
+            if (position.Y > Engine.ScreenHeight - height)
+                position.Y = Engine.ScreenHeight - height;
 
             // Update Controls
             foreach (Control control in controls)

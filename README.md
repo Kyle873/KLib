@@ -1,7 +1,7 @@
-KLIB
+KLib
 ====
 
-A 2D XNA Game Engine I was working on to use with some game ideas I had. Basic features that were more or less working include
+A 2D XNA/MonoGame Game Engine
 
 * Actor System
 * Basic Console with the beginnings of a command system
@@ -19,7 +19,3 @@ A 2D XNA Game Engine I was working on to use with some game ideas I had. Basic f
 * BMFont handling via the BMFont AngelCode BMFont XML Serializer
 * Tweening and scaling functions handling by TinyTween by Nick Gravelyn
 * Originally I also started working on a TileEd renderer/parser, but didn't end up needing it for any of my ideas so I never finished it
-
-I ultimately stopped working on the project due to the death of XNA and the fact that porting everything, how basic it is, to MonoGame became an absolute chore for the easiest things, such as font handling and having no usable content pipeline and requiring all assets to be run through the XNA pipeline, further slowing the process down
-
-One day I might reuse the code or update it to use a future C# graphics engine or reincarnation of XNA, if that ever actually happens

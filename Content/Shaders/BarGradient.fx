@@ -1,8 +1,9 @@
 sampler s0;
+
 float3 colorStart;
 float3 colorEnd;
 
-float4 PixelShaderFunction(float2 coords: TEXCOORD0) : COLOR0
+float4 BarGradient(float2 coords: TEXCOORD0) : COLOR0
 {
 	float4 color = tex2D(s0, coords);
 
@@ -16,6 +17,6 @@ technique Technique1
 {
     pass Pass1
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+		PixelShader = compile ps_2_0 BarGradient();
     }
 }

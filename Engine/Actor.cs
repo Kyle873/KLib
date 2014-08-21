@@ -7,16 +7,75 @@ namespace KLib
 {
     public class Actor
     {
-        public Texture2D texture = null;
-        public Vector2 position = Vector2.Zero;
-        public Vector2 velocity = Vector2.Zero;
-        public Rectangle? sourceRect = null;
-        public Color color = Color.White;
-        public float rotation = 0f;
-        public Vector2 origin = Vector2.Zero;
-        public Vector2 scale = Vector2.Zero;
-        public Effect effect = null;
-        public bool picked = false;
+        private Texture2D texture = null;
+        public Texture2D Texture
+        {
+            get { return texture; }
+            set { texture = value; }
+        }
+
+        private Vector2 position = Vector2.Zero;
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+
+        private Vector2 velocity = Vector2.Zero;
+        public Vector2 Velocity
+        {
+            get { return velocity; }
+            set { velocity = value; }
+        }
+
+        private Rectangle? sourceRect = null;
+        public Rectangle? SourceRect
+        {
+            get { return sourceRect; }
+            set { sourceRect = value; }
+        }
+
+        private Color color = Color.White;
+        public Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+        private float rotation = 0f;
+        public float Rotation
+        {
+            get { return rotation; }
+            set { rotation = value; }
+        }
+
+        private Vector2 origin = Vector2.Zero;
+        public Vector2 Origin
+        {
+            get { return origin; }
+            set { origin = value; }
+        }
+
+        private Vector2 scale = Vector2.Zero;
+        public Vector2 Scale
+        {
+            get { return scale; }
+            set { scale = value; }
+        }
+
+        private Effect effect = null;
+        public Effect Effect
+        {
+            get { return effect; }
+            set { effect = value; }
+        }
+
+        private bool picked = false;
+        public bool Picked
+        {
+            get { return picked; }
+            set { picked = value; }
+        }
 
         public Actor()
         {
@@ -31,27 +90,27 @@ namespace KLib
             if (center)
                 origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
-            Engine.actors.Add(this);
+            Engine.Actors.Add(this);
         }
 
         public Actor(string path, Vector2 position, bool center = true)
         {
-            this.texture = Engine.content.Load<Texture2D>(path);
+            this.texture = Engine.Content.Load<Texture2D>(path);
             this.position = position;
             this.scale = new Vector2(texture.Width, texture.Height);
 
             if (center)
                 origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
-            Engine.actors.Add(this);
+            Engine.Actors.Add(this);
         }
 
         public virtual void Draw(SpriteBatch batch)
         {
             if (effect != null)
             {
-                SpriteBatch effectBatch = new SpriteBatch(Engine.device);
-                effectBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, Camera.transform);
+                SpriteBatch effectBatch = new SpriteBatch(Engine.Device);
+                effectBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, Camera.Transform);
                 effectBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)scale.X, (int)scale.Y), sourceRect, color, rotation, origin, SpriteEffects.None, 0f);
                 effectBatch.End();
             }
@@ -63,10 +122,10 @@ namespace KLib
         {
             // Picking
             Vector2 cursorPos = Vector2.Zero;
-            if (Cursor.enabled)
-                cursorPos = Cursor.position;
+            if (Cursor.Enabled)
+                cursorPos = Cursor.Position;
             else
-                cursorPos = new Vector2(Input.mouseX, Input.mouseY);
+                cursorPos = new Vector2(Input.MouseX, Input.MouseY);
             Vector2 cursorWorldPos = Cursor.ToWorldCoords(cursorPos);
             if (origin != Vector2.Zero)
             {
@@ -82,7 +141,7 @@ namespace KLib
 
         public virtual void BasicMove(float speed)
         {
-            if (Timing.stepped)
+            if (Timing.Stepped)
             {
                 position.X += velocity.X;
                 velocity.X -= speed;

@@ -36,17 +36,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK">
-      <HintPath>..\packages\MonoGame.Binaries.3.2.0\build\net40\OpenTK.dll</HintPath>
+      <HintPath>..\..\Repos\MonoGame\MonoGame.Framework\bin\Windows\AnyCPU\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.XML" />
-    <Reference Include="Tao.Sdl">
-      <HintPath>..\packages\MonoGame.Binaries.3.2.0\build\net40\Tao.Sdl.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Libs\BMFont.cs" />
@@ -66,10 +60,10 @@
     <Compile Include="Console\ConsoleLine.cs" />
     <Compile Include="Console\KConsole.cs" />
     <Compile Include="Engine\Engine.cs" />
-    <Compile Include="Engine\Enums.cs" />
     <Compile Include="Engine\Input.cs" />
     <Compile Include="GUI\Icon.cs" />
     <Compile Include="GUI\Label.cs" />
+    <Compile Include="Rendering\Enums.cs" />
     <Compile Include="Rendering\ParticleSystem.cs" />
     <Compile Include="Rendering\Pixel.cs" />
     <Compile Include="Rendering\Popoff.cs" />
@@ -83,7 +77,6 @@
     <Compile Include="Rendering\Sprite.cs" />
     <Compile Include="Rendering\Text.cs" />
     <Compile Include="Rendering\Tooltip.cs" />
-    <Compile Include="Rendering\TooltipLine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

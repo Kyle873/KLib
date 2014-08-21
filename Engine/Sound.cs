@@ -22,8 +22,17 @@ namespace KLib
         static Channel sfxChannel = null;
         static Channel musicChannel = null;
         static List<MusicLayer> musicLayers = new List<MusicLayer>();
+        internal static List<MusicLayer> MusicLayers
+        {
+            get { return Sound.musicLayers; }
+        }
 
-        public static float fadeTime = 1f;
+        private static float fadeTime = 1f;
+        public static float FadeTime
+        {
+            get { return Sound.fadeTime; }
+            set { Sound.fadeTime = value; }
+        }
 
         public static void Init()
         {
@@ -33,7 +42,7 @@ namespace KLib
 
         public static void PlaySound(string path)
         {
-            path = Engine.content.RootDirectory + "\\" + path;
+            path = Engine.Content.RootDirectory + "\\" + path;
 
             FMOD.Sound sound = null;
             system.createSound(path, MODE.HARDWARE | MODE.LOOP_OFF, ref sound);
@@ -42,7 +51,7 @@ namespace KLib
 
         public static void AddMusicLayer(string path)
         {
-            path = Engine.content.RootDirectory + "\\" + path;
+            path = Engine.Content.RootDirectory + "\\" + path;
 
             MusicLayer instance = new MusicLayer();
             FMOD.Sound layer = null;

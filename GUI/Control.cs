@@ -23,10 +23,10 @@ namespace KLib
             if (!visible)
                 return;
 
-            if (Input.mouseX >= position.X &&
-                Input.mouseX <= position.X + width &&
-                Input.mouseY >= position.Y &&
-                Input.mouseY <= position.Y + height)
+            if (Input.MouseX >= position.X &&
+                Input.MouseX <= position.X + width &&
+                Input.MouseY >= position.Y &&
+                Input.MouseY <= position.Y + height)
                 inside = true;
             else
                 inside = false;

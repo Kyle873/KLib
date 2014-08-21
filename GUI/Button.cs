@@ -50,10 +50,10 @@ namespace KLib
                 bounds = font.MeasureString(text);
                 bounds.Y -= 8;
 
-                if (Input.mouseX >= position.X &&
-                    Input.mouseX <= position.X + bounds.X &&
-                    Input.mouseY >= position.Y &&
-                    Input.mouseY <= position.Y + bounds.Y)
+                if (Input.MouseX >= position.X &&
+                    Input.MouseX <= position.X + bounds.X &&
+                    Input.MouseY >= position.Y &&
+                    Input.MouseY <= position.Y + bounds.Y)
                     inside = true;
                 else
                     inside = false;

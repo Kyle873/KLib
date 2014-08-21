@@ -6,12 +6,32 @@ namespace KLib
 {
     public static class Timing
     {
-        private static double delay = 0;
+        static double delay = 0;
 
-        public static int step = 0;
-        public static bool stepped = false;
-        public static float timer = 0;
-        public static float FPS = 0f;
+        private static int step = 0;
+        public static int Step
+        {
+            get { return Timing.step; }
+            set { Timing.step = value; }
+        }
+        private static bool stepped = false;
+        public static bool Stepped
+        {
+            get { return Timing.stepped; }
+            set { Timing.stepped = value; }
+        }
+        private static float timer = 0;
+        public static float Timer
+        {
+            get { return Timing.timer; }
+            set { Timing.timer = value; }
+        }
+        private static float fps = 0f;
+        public static float Fps
+        {
+            get { return Timing.fps; }
+            set { Timing.fps = value; }
+        }
 
         public static void Update(GameTime dt)
         {
@@ -29,7 +49,7 @@ namespace KLib
                 stepped = false;
             }
 
-            FPS = 1 / (float)dt.ElapsedGameTime.TotalSeconds;
+            fps = 1 / (float)dt.ElapsedGameTime.TotalSeconds;
         }
     }
 }

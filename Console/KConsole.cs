@@ -19,9 +19,21 @@ namespace KLib
 
     public static class KConsole
     {
-        public static bool visible = false;
-        public static bool active = false;
-        public static List<ConsoleCommand> commands = new List<ConsoleCommand>();
+        private static bool visible = false;
+        public static bool Visible
+        {
+            get { return KConsole.visible; }
+        }
+        private static bool active = false;
+        public static bool Active
+        {
+            get { return KConsole.active; }
+        }
+        private static List<ConsoleCommand> commands = new List<ConsoleCommand>();
+        public static List<ConsoleCommand> Commands
+        {
+            get { return KConsole.commands; }
+        }
 
         static SpriteFont font = null;
         static string line = string.Empty;
@@ -90,7 +102,7 @@ namespace KLib
         public static void Init()
         {
             // Initialize Font
-            font = Engine.content.Load<SpriteFont>(@"Fonts\ConsoleFont");
+            font = Engine.Content.Load<SpriteFont>(@"Fonts\ConsoleFont");
 
             // Help Console Command
             ConsoleCommand helpCommand = new ConsoleCommand(Help, "help");
@@ -122,12 +134,12 @@ namespace KLib
             int split = 0;
             float bounds = 24f;
             bool firstTrimmed = false;
-            if (Engine.screenWidth > 0)
+            if (Engine.ScreenWidth > 0)
                 for (int i = 0; i < text.Length; i++)
                 {
                     bounds += font.MeasureString(text.Substring(i, 1)).X;
 
-                    if (bounds > Engine.screenWidth)
+                    if (bounds > Engine.ScreenWidth)
                     {
                         if (!firstTrimmed)
                         {
@@ -178,9 +190,9 @@ namespace KLib
                 return;
 
             if (visible)
-                heightTween.Start(Engine.screenHeight / 2, 0, 0.5f, ScaleFuncs.Linear);
+                heightTween.Start(Engine.ScreenHeight / 2, 0, 0.5f, ScaleFuncs.Linear);
             else
-                heightTween.Start(0, Engine.screenHeight / 2, 0.5f, ScaleFuncs.Linear);
+                heightTween.Start(0, Engine.ScreenHeight / 2, 0.5f, ScaleFuncs.Linear);
         }
 
         public static void Draw(SpriteBatch batch)
@@ -188,7 +200,7 @@ namespace KLib
             if (!visible)
                 return;
 
-            Shape.DrawRect(0, 0, Engine.screenWidth, (int)height, Color.Gray, new Color(0, 0, 0, 128));
+            Shape.DrawRect(0, 0, Engine.ScreenWidth, (int)height, Color.Gray, new Color(0, 0, 0, 128));
 
             if (active)
             {
@@ -202,24 +214,24 @@ namespace KLib
                         Text.DrawText(font, history[i].text, new Vector2(12, 10 + ((i - offset) * 20)), history[i].color);
 
                 // Prompt
-                Text.DrawText(font, ">", new Vector2(12, (Engine.screenHeight / 2) - 24), Color.White);
-                Text.DrawText(font, line, new Vector2(24, (Engine.screenHeight / 2) - 24), Color.White);
+                Text.DrawText(font, ">", new Vector2(12, (Engine.ScreenHeight / 2) - 24), Color.White);
+                Text.DrawText(font, line, new Vector2(24, (Engine.ScreenHeight / 2) - 24), Color.White);
 
                 // Cursor
                 Vector2 lineSize = font.MeasureString(line);
                 float color = 0.75f + Utils.SineWave(8, 0.25f);
-                Text.DrawText(font, "|", new Vector2(24 + lineSize.X, (Engine.screenHeight / 2) - 24), new Color(color, color, color));
+                Text.DrawText(font, "|", new Vector2(24 + lineSize.X, (Engine.ScreenHeight / 2) - 24), new Color(color, color, color));
             }
         }
 
         public static void Update(GameTime dt)
         {
             visible = !(height <= 0);
-            active = (height >= Engine.screenHeight / 2);
+            active = (height >= Engine.ScreenHeight / 2);
 
             height = heightTween.CurrentValue;
 
-            maxLines = ((Engine.screenHeight / 2) / 20 - 2);
+            maxLines = ((Engine.ScreenHeight / 2) / 20 - 2);
         }
 
         public static void CheckInput(GameTime gt)

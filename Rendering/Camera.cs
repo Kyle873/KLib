@@ -7,16 +7,43 @@ namespace KLib
 {
     public static class Camera
     {
-        public static Vector2 position = Vector2.Zero;
-        public static Matrix transform = Matrix.Identity;
-        public static Matrix transformInvert = Matrix.Identity;
-        public static Viewport viewport = new Viewport();
-        public static float rotation = 0f;
-        public static float zoom = 1f;
+        private static Vector2 position = Vector2.Zero;
+        public static Vector2 Position
+        {
+            get { return Camera.position; }
+            set { Camera.position = value; }
+        }
+        private static Matrix transform = Matrix.Identity;
+        public static Matrix Transform
+        {
+            get { return Camera.transform; }
+        }
+        private static Matrix transformInvert = Matrix.Identity;
+        public static Matrix TransformInvert
+        {
+            get { return Camera.transformInvert; }
+        }
+        private static Viewport viewport = new Viewport();
+        public static Viewport Viewport
+        {
+            get { return Camera.viewport; }
+        }
+        private static float rotation = 0f;
+        public static float Rotation
+        {
+            get { return Camera.rotation; }
+            set { Camera.rotation = value; }
+        }
+        private static float zoom = 1f;
+        public static float Zoom
+        {
+            get { return Camera.zoom; }
+            set { Camera.zoom = value; }
+        }
 
         public static void Init()
         {
-            viewport = Engine.device.Viewport;
+            viewport = Engine.Device.Viewport;
         }
 
         public static void Update(GameTime dt)
